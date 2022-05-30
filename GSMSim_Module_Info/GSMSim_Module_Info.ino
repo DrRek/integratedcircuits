@@ -33,22 +33,19 @@
 // You can use any Serial interface. I recommended HardwareSerial. Please use the library with highiest baudrate.
 // In examples, i used HardwareSerial. You can change it anymore.
 
-//#define RESET_PIN 10 // you can use any pin.
+#define RESET_PIN 10 // you can use any pin.
 SoftwareSerial Serial1(8,7);
 GSMSim gsm(Serial1);
 
 void setup() {
-  Serial.begin(9600); // Serial for debug...
-  Serial.println("Inizio 1");
-  
-	Serial1.begin(115200); // If you dont change module baudrate, it comes with auto baudrate.
+	Serial1.begin(9600); // If you dont change module baudrate, it comes with auto baudrate.
 
-  Serial.println("Inizio 2");
 	while(!Serial1) {
 		; // wait for module for connect.
 	}
 
-  Serial.print("Inizio 3");
+	Serial.begin(9600); // Serial for debug...
+
 	// Init module...
 	gsm.init(); // use for reseting module. Use it if you dont have any valid reason.
 
@@ -82,6 +79,9 @@ void loop() {
 	if(Serial1.available()) {
 		Serial.println(Serial1.readString());
 	}
+ if(Serial.available()){
+    Serial1.write(Serial.read());
+ }
 	
 	// put your main code here, to run repeatedly:
 }
