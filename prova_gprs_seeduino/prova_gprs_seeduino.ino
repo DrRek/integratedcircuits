@@ -7,7 +7,7 @@ Sketch: GPRS HTTP Test
 #define PIN_TX    7  // Has already exchanged TX and RX pins
 #define PIN_RX    8
 
-char http_cmd[] = "GET /55c8ef2a-2642-4068-aba0-50e34aa27559?test=seeduino HTTP/1.0\r\n\r\n";
+char http_cmd[] = "GET /55c8ef2a-2642-4068-aba0-50e34aa27559?test=seeduino2 HTTP/1.0\r\n\r\n";
 char buffer[512];
 
 GPRS gprs;
@@ -16,7 +16,7 @@ void setup() {
   Serial.begin(9600);
   while(!Serial);
   Serial.println("GPRS - HTTP Connection Test...");  
-  gprs.preInit();
+  //gprs.preInit();
   while(0 != gprs.init()) {
      delay(1000);
      Serial.println("init error");
