@@ -1,21 +1,16 @@
-/*
-Sketch: GPRS HTTP Test
-*/
-#include <gprs.h>
-#include <SoftwareSerial.h>
-
-#define PIN_TX    7  // Has already exchanged TX and RX pins
-#define PIN_RX    8
-#define UART_DEBUG 1
-
-char http_cmd[] = "GET /55c8ef2a-2642-4068-aba0-50e34aa27559?test=seeduino2 HTTP/1.0\r\n\r\n";
-char buffer[512];
+#include "mygprs.h"
 
 GPRS gprs;
 
-void setup() {
-  Serial.begin(9600);
-  while(!Serial);
+void init_gprs(){
+  pinMode (SWITCH_ON_GPRS, OUTPUT);
+  digitalWrite(SWITCH_ON_GPRS, LOW);
+}
+
+void send_http_message(char* data){
+  //accendo il GPS
+  digitalWrite(SWITCH_ON_GPRS, HIGH);
+
   Serial.println("GPRS - HTTP Connection Test...");  
   //gprs.preInit();
   while(0 != gprs.init()) {
@@ -40,16 +35,14 @@ void setup() {
   }
 
   Serial.println("waiting to fetch...");
-  if(0 == gprs.sendTCPData(http_cmd))
+  if(0 == gprs.sendTCPData(data))
   {      
     gprs.serialDebug();
   }
   
-//  gprs.closeTCP();
-//  gprs.shutTCP();
-//  Serial.println("close");  
-}
+  gprs.closeTCP();
+  gprs.shutTCP();
+  Serial.println("close");
 
-void loop() {    
-    
+  digitalWrite(SWITCH_ON_GPRS, LOW);
 }

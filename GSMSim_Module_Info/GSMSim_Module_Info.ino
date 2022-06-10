@@ -35,7 +35,7 @@
 
 #define RESET_PIN 10 // you can use any pin.
 SoftwareSerial Serial1(8,7);
-GSMSim gsm(Serial1);
+//GSMSim gsm(Serial1);
 
 void setup() {
 	Serial1.begin(9600); // If you dont change module baudrate, it comes with auto baudrate.
@@ -47,7 +47,7 @@ void setup() {
 	Serial.begin(9600); // Serial for debug...
 
 	// Init module...
-	gsm.init(); // use for reseting module. Use it if you dont have any valid reason.
+	/*gsm.init(); // use for reseting module. Use it if you dont have any valid reason.
 
 	// Module Manifacturer
 	Serial.print("Module Manifacturer... ");
@@ -67,7 +67,7 @@ void setup() {
 	// Module Manifacturer
 	Serial.print("Module IMEI... ");
 	Serial.println(gsm.moduleIMEI());
-	delay(1000);
+	delay(1000);*/
 
 	// For other methods please look at readme.txt file.
 

@@ -9,8 +9,11 @@ TinyGPSPlus gps;
 
 void loop(){
   while (serial_connection.available()){
-    gps.encode(serial_connection.read());
+    char c = serial_connection.read();
+    //Serial.print(c);
+    gps.encode(c);
   }
+  //Serial.println();
   if(gps.location.isUpdated()){
     Serial.print("Satellite Count: ");
     Serial.println(gps.satellites.value());
@@ -28,6 +31,9 @@ void loop(){
 
 
 void setup(){
+  pinMode (3, OUTPUT);
+  digitalWrite(3, HIGH);
+  
   Serial.begin(9600);
   serial_connection.begin(9600);
   Serial.println("GPS Starting");
