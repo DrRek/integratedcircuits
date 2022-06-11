@@ -21,9 +21,9 @@ void loop() {
     if(shouldIWatch){
       shouldIWatch = false;
       digitalWrite(OUTPUT_PIN, LOW);
-      //delay(500);
+      delay(100);
       digitalWrite(OUTPUT_PIN, HIGH);
     }
   }
-  delay(50);
+  delay(500);
 }

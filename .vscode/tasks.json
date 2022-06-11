@@ -1,0 +1,29 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Upload to ATmega328 8mhz via BT",
+            "type": "shell",
+            "command": "arduino --upload --board breadboard:avr:atmega328bb --port /dev/rfcomm0 --verbose --pref sketchbook.path=/home/luca/projects/ic ${file}"
+        },
+        {
+            "label": "Upload to ATmega328 8mhz via ArduinoUNO senza microcontroller",
+            "type": "shell",
+            "command": "arduino --upload --board breadboard:avr:atmega328bb --port /dev/ttyACM0 --verbose --pref sketchbook.path=/home/luca/projects/ic ${file}"
+        },
+        {
+            "label": "Upload to ATtiny85 via USB",
+            "type": "shell",
+            "command": "arduino --upload --board digistump:avr:attiny85 --port /dev/rfcomm0 --verbose --pref sketchbook.path=/home/luca/projects/ic ${file}",
+            "problemMatcher": []
+        },
+        {
+            "label": "Upload to Arduino UNO via USB",
+            "type": "shell",
+            "command": "arduino --upload --board digistump:avr:attiny85 --port /dev/rfcomm0 --verbose --pref sketchbook.path=/home/luca/projects/ic ${file}",
+            "problemMatcher": []
+        }
+    ]
+}

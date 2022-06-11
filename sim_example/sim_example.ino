@@ -42,3 +42,4 @@ void updateSerial()
     Serial.write(mySerial.read());//Forward what Software Serial received to Serial Port
   }
 }
+

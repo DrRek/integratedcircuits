@@ -6,7 +6,7 @@ void setup()
 {
 Serial.begin(9600);
 Serial.println("Enter AT commands:");
-HC05.begin(38400);
+HC05.begin(57600); //38400 for AT commands, 57600 otherwise
 }
 void loop()
 {
