@@ -20,10 +20,20 @@ void loop() {
   } else {
     if(shouldIWatch){
       shouldIWatch = false;
+      //delay(1000); //secondi alla connessione per essere inizilizzata
       digitalWrite(OUTPUT_PIN, LOW);
       delay(100);
       digitalWrite(OUTPUT_PIN, HIGH);
+      delay(100);
+      digitalWrite(OUTPUT_PIN, LOW);
+      delay(100);
+      digitalWrite(OUTPUT_PIN, HIGH);
+      delay(100);
+      digitalWrite(OUTPUT_PIN, LOW);
+      delay(100);
+      digitalWrite(OUTPUT_PIN, HIGH);
+      delay(100);
     }
   }
-  delay(500);
+  delay(10);
 }
